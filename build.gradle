@@ -1,0 +1,55 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.1'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.javanauta'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
+	implementation 'io.swagger.core.v3:swagger-annotations:2.2.10'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	// Dependências de testes
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.1'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.1'
+	testImplementation 'org.junit.platform:junit-platform-commons:1.10.0'
+
+	// Testes de integração com MockMvc
+	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+	// Dependências para Mockito
+	testImplementation 'org.mockito:mockito-core:5.11.0'
+	testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+
+	testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
