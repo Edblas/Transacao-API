@@ -1,4 +1,4 @@
-# **Transação API**
+# **Transação API-Desafio técnico Itaú**
 
 Este projeto é uma API REST para gerenciar transações e calcular estatísticas das transações realizadas nos últimos 60 segundos. A API foi desenvolvida com **Java** e **Spring Boot**.
 
